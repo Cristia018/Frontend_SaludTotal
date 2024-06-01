@@ -2,6 +2,7 @@ import SideBarItem from "./SideBarItem";
 import DateIcon from "../assets/icons/date_icon.png"
 import PendingIcon from "../assets/icons/pending_icon.png"
 import OffIcon from "../assets/icons/off_icon.png"
+import ProfileIcon from "../assets/icons/profile_icon.png"
 import {authStore} from '../store/auth.store.js'
 
 
@@ -19,6 +20,10 @@ export default function SideBar() {
                 <SideBarItem route="/dates_pending">
                     <img src={PendingIcon} width="32px" alt="" />
                     <h2>Citas Pendientes</h2>
+                </SideBarItem>
+                <SideBarItem route="/profile">
+                    <img src={ProfileIcon} width="32px" alt="" />
+                    <h2>Mi perfil</h2>
                 </SideBarItem>
             </ul>
             <ul className="w-full flex items-center flex-col gap-3">

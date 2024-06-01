@@ -12,3 +12,50 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.datepicker {
+  position: relative;
+  display: inline-block;
+}
+
+.datepicker-input {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.datepicker-calendar {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.datepicker-calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.datepicker-calendar th,
+.datepicker-calendar td {
+  width: 14.28%;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.datepicker-calendar th {
+  background: #f0f0f0;
+}
+
+.datepicker-calendar td:hover {
+  background: #eee;
+}
+
+.datepicker-calendar .selected {
+  background: #007bff;
+  color: white;
+}
