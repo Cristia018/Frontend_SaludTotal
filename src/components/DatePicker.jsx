@@ -17,7 +17,7 @@ export default function DatePicker() {
                     sx={{
                         '& .MuiDateCalendar-root': {
                             width: '560px',
-                            minHeight: '370px', // Ajusta el ancho del calendario
+                            minHeight: '410px', // Ajusta el ancho del calendario
                             '& .MuiPickersDay-root': {
                                 fontSize: '1.5rem', // Ajusta el tamaño de la fuente de los días
                                 width: '50px', // Ajusta el ancho de cada día
@@ -30,7 +30,7 @@ export default function DatePicker() {
                                 fontSize: '1.8rem', // Ajusta el tamaño de la fuente del mes y el año
                             },
                             '& .MuiPickersSlideTransition-root': {
-                                height: '270px',
+                                height: '325px',
                             },
                             '& .MuiDayCalendar-weekDayLabel': {
                                 fontSize: '1.5rem', // Ajusta el tamaño de la fuente de los días de la semana
