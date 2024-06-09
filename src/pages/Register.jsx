@@ -1,9 +1,28 @@
 import Header from '../components/Header'
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { authStore } from '../store/auth.store'
+import {useNavigate} from 'react-router-dom'
 
 export default function Register() {
 
-    const {handleSubmit, register} = useForm()
+    const { handleSubmit, register } = useForm()
+    const { register: suscribe } = authStore()
+    const navigate = useNavigate()
+
+    const onSubmit = handleSubmit(async (data) => {
+        try {
+            await suscribe({
+                ...data,
+                rol:1
+            })
+            navigate('/dates')
+        } catch (error) {
+            console.log(error);
+        }
+    })
+
+
+
 
     return (
         <div className="w-full h-screen items-center flex flex-col">
@@ -11,9 +30,9 @@ export default function Register() {
             <main className='h-full flex flex-col items-center py-6 gap-5'>
                 <h1 className='text-2xl font-semibold'>Registrarse</h1>
                 <div className='shadow-lg shadow-gray-400 rounded-md flex flex-col border border-cyan-100 p-7 gap-2 min-w-80'>
-                    <form className='flex flex-col gap-2' action="">
-                        <label className='font-semibold' htmlFor="">Nombres</label>
-                        <input {...register('nombres')} placeholder='Nombre del paciente' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="text" />
+                    <form onSubmit={onSubmit} className='flex flex-col gap-2' action="">
+                        <label className='font-semibold' htmlFor="">Nombre</label>
+                        <input {...register('nombre')} placeholder='Nombre del paciente' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="text" />
 
                         <label className='font-semibold' htmlFor="">Dirección</label>
                         <input {...register('direccion')} placeholder='Dirección' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="text" />

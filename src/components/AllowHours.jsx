@@ -11,7 +11,7 @@ export default function AllowHours() {
     }
 
     return (<>
-        {horas_disponibles.map((hora, i) => <span onClick={() => changeSelectedIndex(i)} className={`cursor-pointer py-2 text-xl border-2 border-gray-500 w-3/5 text-center 
+        {horas_disponibles.map((hora, i) => <span key={i} onClick={() => changeSelectedIndex(i)} className={`cursor-pointer py-2 text-xl border-2 border-gray-500 w-3/5 text-center 
         ${selectedIndex == i? 'bg-blue-400': ''}`}>{hora}</span>)}
     </>)
 }

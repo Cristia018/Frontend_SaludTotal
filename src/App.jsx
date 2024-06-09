@@ -2,6 +2,8 @@ import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
 import DatesPage from './pages/Dates'
 import PendingDates from './pages/PendingDates'
+import PatientsPage from './pages/Pacientes'
+
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ProtectedRoute } from './ProtectedRoute'
@@ -18,6 +20,7 @@ function App() {
             <Route path='/dates' element={<DatesPage />} />
             <Route path='/dates_pending' element={<PendingDates />} />
             <Route path='/' element={<DatesPage />} />
+            <Route path='/patients' element={<PatientsPage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
