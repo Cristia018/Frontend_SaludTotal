@@ -13,7 +13,8 @@ export const authStore = create((set) => {
                 if (result.status === 200) {
                     const {data} = result
                     localStorage.setItem("token", "exampletoken")
-                    set({ loading: false, isAuthenticated: true, user: data.paciente });
+                    console.log(data.user);
+                    set({ loading: false, isAuthenticated: true, user: data.user });
                 }
 
             } catch (error) {
@@ -28,7 +29,8 @@ export const authStore = create((set) => {
             const result = await register(data)
             if (result.status === 201){
                 localStorage.setItem("token", "exampletoken")
-                set({ loading: false, isAuthenticated: true, user: data.paciente });
+                const {dataUser} = result
+                set({ loading: false, isAuthenticated: true, user: dataUser.user });
             }
         }
     })

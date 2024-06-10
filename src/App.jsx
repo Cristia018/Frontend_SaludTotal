@@ -20,7 +20,7 @@ function App() {
             <Route path='/dates' element={<DatesPage />} />
             <Route path='/dates_pending' element={<PendingDates />} />
             <Route path='/' element={<DatesPage />} />
-            <Route path='/patients' element={<PatientsPage />}></Route>
+            <Route path='/patients' element={<PatientsPage />}/>
           </Route>
         </Routes>
       </BrowserRouter>

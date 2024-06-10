@@ -13,6 +13,8 @@ export default function DatesPage() {
     
     const formatDate = (date) => (date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + (date.getHours() - 5) + ":00:00")
 
+    console.log(formatDate(new Date()));
+
     return (
         <div className="w-full h-screen items-center flex flex-col">
             <Header></Header>
