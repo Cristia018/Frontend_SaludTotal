@@ -1,7 +1,6 @@
 
-
-export default function PendingDateCard({date}) {
-    const {fecha_destino, espec:{nombre_especialidad}} = date
+export default function PendingDateCard({date, onCancel, setDateId}) {
+    const {fecha_destino, espec:{nombre_especialidad}, id} = date
 
     const date_time = new Date(fecha_destino)
 
@@ -9,6 +8,12 @@ export default function PendingDateCard({date}) {
 
     const [fecha, hora] = fecha_completa.split(' ')
 
+    const cancelClick = () => {
+        setDateId(id)
+        onCancel()
+    }
+
+    
     return (
         <div className="flex px-5 py-2 justify-between w-full items-center gap-7">
             <div className="border border-gray-500 w-full p-5 flex justify-between items-center gap-16">
@@ -28,7 +33,7 @@ export default function PendingDateCard({date}) {
                 </section>
                 <section className="flex flex-col justify-center items-center min-w-36 gap-2">
                     <button className="py-1 w-full text-base font-semibold rounded-lg border border-gray-700 bg-blue-300">Posponer Cita</button>
-                    <button className="py-1 w-full text-base font-semibold rounded-lg border border-gray-700 bg-red-300">Cancelar cita</button>
+                    <button onClick={() => cancelClick()} className="py-1 w-full text-base font-semibold rounded-lg border border-gray-700 bg-red-300">Cancelar cita</button>
                 </section>
             </div>
 

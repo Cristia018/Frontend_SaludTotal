@@ -6,9 +6,16 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { Box, TextField } from "@mui/material";
 import { useState } from "react";
 
-export default function DatePicker() {
+export default function DatePicker({date, onChange}) {
 
     const [value, setValue] = useState(dayjs(new Date().toDateString()))
+
+    const handleChange = (newValue) => {
+        setValue(newValue)
+        if (onChange) {
+            onChange(new Date(newValue))
+        }
+    }
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -41,7 +48,7 @@ export default function DatePicker() {
                             }
                         },
                     }}>
-                    <DateCalendar value={value} onChange={(newValue) => setValue(newValue)} />
+                    <DateCalendar value={value} onChange={handleChange} />
                 </Box>
             </DemoContainer>
         </LocalizationProvider>

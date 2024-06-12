@@ -2,18 +2,67 @@ import DatePicker from "../components/DatePicker";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import AllowHours from "../components/AllowHours";
+import { useState } from "react";
+import { authStore } from "../store/auth.store";
+import { postDate } from '../requests/dates.request'
 
-const horas_disponibles = ["9:00 am", "10:00 am", "11:00 am", "2:00 pm", "3:00 pm", "4:00 pm"]
+const format_hours = {
+    "9:00 am": 9,
+    "10:00 am": 10,
+    "11:00 am": 11,
+    "2:00 pm": 14,
+    "3:00 pm": 15,
+    "4:00 pm": 16,
+};
+
 
 export default function DatesPage() {
 
-    const submit = (e) => {
-        
-    }
-    
     const formatDate = (date) => (date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + (date.getHours() - 5) + ":00:00")
 
-    console.log(formatDate(new Date()));
+    const [date, setDate] = useState(new Date());
+    const { user } = authStore();
+
+    const handleChangeDate = (newValue = new Date()) => {
+        const newDate = new Date(date.toDateString());
+        newDate.setHours(date.getHours());
+        newDate.setFullYear(
+            newValue.getFullYear(),
+            newValue.getMonth(),
+            newValue.getDate()
+        );
+        setDate(newDate);
+    };
+
+    const handleChangeHour = (newValue) => {
+        const newDate = new Date(date.toDateString());
+        newDate.setHours(format_hours[newValue]);
+        setDate(newDate);
+    };
+
+    const submitDate = async () => {
+        const data = {
+            date: {
+                fecha_destino: formatDate(date),
+                paciente: user.idPaciente,
+            }
+        };
+
+        try {
+            const response = await postDate(data);
+            if (response.status === 201) {
+                console.log(response.data);
+            } else {
+                console.log(response.data);
+                console.log("Error posting date");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+
 
     return (
         <div className="w-full h-screen items-center flex flex-col">
@@ -23,13 +72,13 @@ export default function DatesPage() {
                 <div className="flex w-full">
                     <section className="flex flex-col w-2/3 items-center justify-center gap-4 border-r-2 border-gray-500">
                         <h2 className="text-3xl font-semibold">Agendar cita</h2>
-                        <DatePicker></DatePicker>
+                        <DatePicker date={date.toDateString()} onChange={handleChangeDate}></DatePicker>
                     </section>
                     <section className="flex flex-col items-center w-1/3 justify-center gap-4">
                         <h2 className="text-2xl font-semibold">Hora de la cita</h2>
                         <p className="w-4/5 text-lg">Horas disponibles: </p>
-                        <AllowHours></AllowHours>
-                        <button onClick={submit} className="bg-[#00162E] hover:bg-[#003366] text-white rounded-full py-2 w-3/5">Confirmar</button>
+                        <AllowHours onChange={handleChangeHour}></AllowHours>
+                        <button onClick={submitDate} className="bg-[#00162E] hover:bg-[#003366] text-white rounded-full py-2 w-3/5">Confirmar</button>
                     </section>
                 </div>
             </main>

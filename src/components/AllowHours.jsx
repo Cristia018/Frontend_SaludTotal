@@ -2,12 +2,15 @@ import { useState } from "react"
 
 const horas_disponibles = ["9:00 am", "10:00 am", "11:00 am", "2:00 pm", "3:00 pm", "4:00 pm"]
 
-export default function AllowHours() {
+export default function AllowHours({onChange}) {
 
     const [selectedIndex, setSelectedIndex] = useState()
 
     const changeSelectedIndex = (index) => {
         setSelectedIndex(index)
+        if (onChange){
+            onChange(horas_disponibles[index])
+        }
     }
 
     return (<>
