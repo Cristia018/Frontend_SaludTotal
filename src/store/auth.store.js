@@ -29,8 +29,8 @@ export const authStore = create((set) => {
             const result = await register(data)
             if (result.status === 201){
                 localStorage.setItem("token", "exampletoken")
-                const {dataUser} = result
-                set({ loading: false, isAuthenticated: true, user: dataUser.user });
+                const {data} = result
+                set({ loading: false, isAuthenticated: true, user: data.user });
             }
         }
     })

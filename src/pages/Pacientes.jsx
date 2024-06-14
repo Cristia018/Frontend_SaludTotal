@@ -26,7 +26,7 @@ export default function Pacientes() {
             <Header></Header>
             <main className='h-full w-full flex'>
                 <SideBar></SideBar>
-                <div className="flex w-full">
+                <div className="flex w-full p-5">
                     <TablePatients patients={pacientes}></TablePatients>
                 </div>
             </main>

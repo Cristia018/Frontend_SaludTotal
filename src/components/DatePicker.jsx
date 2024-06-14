@@ -4,9 +4,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { Box, TextField } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function DatePicker({date, onChange}) {
+export default function DatePicker({date, onChange, loading}) {
 
     const [value, setValue] = useState(dayjs(new Date().toDateString()))
 
@@ -16,6 +16,12 @@ export default function DatePicker({date, onChange}) {
             onChange(new Date(newValue))
         }
     }
+
+    useEffect(()=>{
+        if (!loading){
+            setValue(dayjs(new Date().toDateString()))
+        }
+    }, [loading])
 
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>

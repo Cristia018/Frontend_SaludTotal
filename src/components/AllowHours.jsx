@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const horas_disponibles = ["9:00 am", "10:00 am", "11:00 am", "2:00 pm", "3:00 pm", "4:00 pm"]
 
-export default function AllowHours({onChange}) {
+export default function AllowHours({onChange, loading}) {
 
     const [selectedIndex, setSelectedIndex] = useState()
 
@@ -12,6 +12,13 @@ export default function AllowHours({onChange}) {
             onChange(horas_disponibles[index])
         }
     }
+
+    useEffect(()=>{
+        console.log(loading);
+        if (!loading){
+            setSelectedIndex(null)
+        }
+    }, [loading])
 
     return (<>
         {horas_disponibles.map((hora, i) => <span key={i} onClick={() => changeSelectedIndex(i)} className={`cursor-pointer py-2 text-xl border-2 border-gray-500 w-3/5 text-center 
