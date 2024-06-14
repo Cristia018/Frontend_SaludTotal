@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
-          <Route path='/Register' element={<RegisterPage />} />
+          <Route path='/register' element={<RegisterPage />} />
           <Route element={<ProtectedRoute />}>
             <Route path='/dates' element={<DatesPage />} />
             <Route path='/dates_pending' element={<PendingDates />} />
