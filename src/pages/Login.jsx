@@ -31,8 +31,8 @@ export default function Login() {
                     </div>
                     <form className='flex flex-col gap-2' onSubmit={onSubmit}>
 
-                        <label className='font-semibold' htmlFor="">Usuario</label>
-                        <input {...register('correo')} placeholder='Nombre de usuario' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="text" />
+                        <label className='font-semibold' htmlFor="">Correo</label>
+                        <input {...register('correo')} placeholder='Correo' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="text" />
 
                         <label className='font-semibold' htmlFor="">Contraseña</label>
                         <input {...register('clave')} placeholder='Contraseña' className='border border-[#A59E9E] rounded-lg py-1 px-2' type="password" />

@@ -5,6 +5,8 @@ import AllowHours from "../components/AllowHours";
 import { useState } from "react";
 import { authStore } from "../store/auth.store";
 import { postDate } from '../requests/dates.request'
+import Alert from '../components/Alert'
+
 
 const format_hours = {
     "9:00 am": 9,
@@ -18,9 +20,11 @@ const format_hours = {
 
 export default function DatesPage() {
 
-    const formatDate = (date) => (date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + (date.getHours() - 5) + ":00:00")
+    const formatDate = (date) => (date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + (date.getHours()) + ":00:00")
 
     const [date, setDate] = useState(new Date());
+    const [openAlert, setOpenAlert] = useState(false)
+
     const { user } = authStore();
 
     const handleChangeDate = (newValue = new Date()) => {
@@ -50,10 +54,10 @@ export default function DatesPage() {
 
         try {
             const response = await postDate(data);
+            console.log(response.status);
             if (response.status === 201) {
-                console.log(response.data);
+                setOpenAlert(true)
             } else {
-                console.log(response.data);
                 console.log("Error posting date");
             }
         } catch (error) {
@@ -82,6 +86,8 @@ export default function DatesPage() {
                     </section>
                 </div>
             </main>
+            <Alert msg="Cita agendada exitosamente" open={openAlert} handleClose={() => setOpenAlert(false)}></Alert>
+
         </div>
     )
 }

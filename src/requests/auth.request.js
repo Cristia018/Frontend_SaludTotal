@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../config";
 
-const baseUrl = "http://localhost:3000/auth"
+const baseUrl = `${BASE_URL}/auth`
 
 export const register = async (data) => {
     return axios.post(baseUrl + '/register', data)

@@ -1,5 +1,6 @@
 import axios from 'axios'
+import { BASE_URL } from '../config'
 
-const baseUrl = "http://localhost:3000/pacientes"
+const baseUrl = `${BASE_URL}/pacientes`
 
 export const getPacientes = () => axios.get(baseUrl)
