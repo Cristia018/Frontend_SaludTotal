@@ -81,7 +81,8 @@ export default function DatesPage() {
       }
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      setErrorMsg(error);
+      setOpenAlertError(true);
       setLoading(false);
     }
   };
