@@ -2,7 +2,7 @@ import Header from '../components/Header'
 import {useForm} from 'react-hook-form'
 import Logo from '../assets/img/Logo.png'
 import {authStore} from '../store/auth.store.js'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, NavLink} from 'react-router-dom'
 
 export default function Login() {
 
@@ -41,7 +41,7 @@ export default function Login() {
                     </form>
                     <div className='flex items-center flex-col w-full'>
                         <p>¿No tienes una cuenta?</p>
-                        <a href='/register' className='text-center rounded-2xl bg-[#A04000] text-white font-semibold py-1.5 mt-4 w-full hover:bg-orange-600'>Registrarse</a>
+                        <NavLink to='/register' className='text-center rounded-2xl bg-[#A04000] text-white font-semibold py-1.5 mt-4 w-full hover:bg-orange-600'>Registrarse</NavLink>
                     </div>
                 </div>
             </main>
