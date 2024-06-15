@@ -8,6 +8,7 @@ import { postDate } from "../requests/dates.request";
 import Alert from "../components/Alert";
 import AlertError from "../components/AlertError";
 import { useNavigate } from "react-router-dom";
+import DownMenuBar from "../components/DownMenuBar";
 
 const format_hours = {
   "9:00 am": 9,
@@ -92,8 +93,8 @@ export default function DatesPage() {
       <Header></Header>
       <main className="h-full w-full flex">
         <SideBar></SideBar>
-        <div className="flex w-full">
-          <section className="flex flex-col w-2/3 items-center justify-center gap-4 border-r-2 border-gray-500">
+        <div className="flex flex-col md:flex-row w-full items-center">
+          <section className="flex flex-col w-full h-full md:w-2/3 items-center justify-center gap-4 md:border-r-2 border-b-2 border-gray-500">
             <h2 className="text-3xl font-semibold">Agendar cita</h2>
             <DatePicker
               date={date.toDateString()}
@@ -101,7 +102,7 @@ export default function DatesPage() {
               loading={loading}
             ></DatePicker>
           </section>
-          <section className="flex flex-col items-center w-1/3 justify-center gap-4">
+          <section className="flex flex-col items-center w-full md:w-1/3 md:pb-0 pt-5 pb-20 justify-center gap-4">
             <h2 className="text-2xl font-semibold">Hora de la cita</h2>
             <p className="w-4/5 text-lg">Horas disponibles: </p>
             <AllowHours
@@ -127,6 +128,7 @@ export default function DatesPage() {
         open={openAlertError}
         handleClose={() => setOpenAlertError(false)}
       ></AlertError>
+      <DownMenuBar />
     </div>
   );
 }

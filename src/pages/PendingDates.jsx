@@ -7,6 +7,7 @@ import { authStore } from "../store/auth.store"
 import BasicModal from "../components/Modal";
 import Alert from '../components/Alert'
 import { deleteDate } from '../requests/dates.request.js'
+import DownMenuBar from "../components/DownMenuBar.jsx";
 
 export default function PendingDates() {
 
@@ -62,6 +63,7 @@ export default function PendingDates() {
                         </section>
                     </div>
                 </main>
+                <DownMenuBar></DownMenuBar>
             </div>
             <BasicModal open={openModal} handleClose={() => setOpenModal(false)}>
                 <div className="w-full h-full flex items-center flex-col p-3">

@@ -6,8 +6,7 @@ import ProfileIcon from "../assets/icons/profile_icon.png";
 import PacienteIcon from "../assets/icons/paciente_icon.png";
 import HistoryIcon from "../assets/icons/history_icon.png";
 import TurnosIcon from "../assets/icons/turnos_icon.png";
-
-
+import DownloadIcon from "../assets/icons/download_icon.png";
 
 import { authStore } from "../store/auth.store.js";
 
@@ -15,7 +14,7 @@ export default function SideBar() {
   const { logOut, user } = authStore();
 
   return (
-    <aside className="flex flex-col items-center bg-[#2E555C] min-w-72 py-4 justify-between">
+    <aside className="lg:flex hidden flex-col items-center bg-[#2E555C] min-w-72 py-4 justify-between">
       <ul className="w-full flex items-center flex-col gap-3">
         {user?.rol == 1 ? (
           <>
@@ -46,7 +45,7 @@ export default function SideBar() {
               <img src={HistoryIcon} width="32px" alt="" />
               <h2>Historial de turnos</h2>
             </SideBarItem>
-            <SideBarItem route="/history">
+            <SideBarItem route="/queue">
               <img src={TurnosIcon} width="32px" alt="" />
               <h2>Administrar turnos</h2>
             </SideBarItem>
@@ -54,6 +53,16 @@ export default function SideBar() {
         )}
       </ul>
       <ul className="w-full flex items-center flex-col gap-3">
+        <li className="w-10/12 list-none">
+          <a
+            href="/file.pdf"
+            target="_blank"
+            className={`p-3 w-full text-white flex gap-3 rounded-lg items-center cursor-pointer hover:bg-[#1F5C73] text-xl font-semibold`}
+          >
+            <img src={DownloadIcon} width="32px" alt="" />
+          <h2>Manual de usuario</h2>
+          </a>
+        </li>
         <SideBarItem event={() => logOut()}>
           <img src={OffIcon} width="32px" alt="" />
           <h2>Cerrar Sesion</h2>

@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import TablePatients from "../components/TablePatients";
 import { getPacientes } from "../requests/pacientes.request";
+import DownMenuBar from "../components/DownMenuBar";
 
 
 export default function Pacientes() {
@@ -13,7 +14,6 @@ export default function Pacientes() {
     useEffect(() => {
         (async () => {
             const response = await getPacientes()
-            console.log(response.data.pacientes);
             if (response.status == 200){
                 setPacientes(response.data.pacientes)
             }
@@ -30,6 +30,7 @@ export default function Pacientes() {
                     <TablePatients patients={pacientes}></TablePatients>
                 </div>
             </main>
+            <DownMenuBar></DownMenuBar>
         </div>
     )
 }
